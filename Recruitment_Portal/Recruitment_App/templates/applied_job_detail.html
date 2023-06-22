@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block main_content %}
+
+{% load static %}
+
+        <!-- Header End -->
+        {% comment %} <div class="container-xxl py-5 bg-dark page-header mb-5">
+            <div class="container my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Job Detail</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb text-uppercase">
+                        <li class="breadcrumb-item"><a href="\">Home</a></li>
+                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Job Detail</li>
+                    </ol>
+                </nav>
+            </div>
+        </div> {% endcomment %}
+        <!-- Header End -->
+
+        <!-- Job Detail Start -->
+        <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="row gy-5 gx-4">
+                
+                    <div class="col" style="width:33.333%; flex:0 0 auto;">
+                        <div class="d-flex align-items-center mb-5">
+                            {% comment %} <img class="flex-shrink-0 img-fluid border rounded" src="{% static 'img/com-logo-2.jpg'%}" alt="" style="width: 80px; height: 80px;"> {% endcomment %}
+                            {% for list in joblisting %}
+                            <div class="text-start ps-8">
+                                <h3 class="mb-3">{{list.title}}</h3>
+                                <hr>
+                                <span class="text-truncate me-3"><i class="fa fa-map-marker-alt text-primary me-2"></i>{{list.company_name}}- {{list.job_location}}</span>
+                                <hr>
+                                <span class="text-truncate me-3"><i class="far fa-clock text-primary me-2"></i>{{list.employment_status}}</span>
+                                <hr>
+                                <span class="text-truncate me-0"><i class="far fa-money-bill-alt text-primary me-2"></i>{{list.Salary}}</span>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+
+                        <div class="apply-btn">
+                            <button class="first_button">Share</button>
+                            {% if user.is_superuser == 1 %}
+                            <button class="second_button">Apply</button>
+                            {% else %}
+                            <button class="second_button">Apply</button>
+                            {% endif %}
+                       
+                        </div>
+                {% for list in joblisting %}  
+                    <div class="panel-full ng-star-inserted">
+                        <div class="panel panel-open">
+                            <div class="panel-heading clearfix">
+                                <h2 class="panel-title theme-color fl-left text-capitalize">Job Description</h2>
+                            </div>
+                            <div class="panel-body ng-star-inserted">
+                                <p><li style="font-size:12px;">{{list.description}}</li></p>
+                            </div>
+                        </div>
+                    
+                    </div>
+
+                    <div class="panel-full ng-star-inserted">
+                        <div class="panel panel-open">
+                            <div class="panel-heading clearfix">
+                                <h2 class="panel-title theme-color fl-left text-capitalize">Responsibility</h2>
+                            </div>
+                            <div class="panel-body ng-star-inserted">
+                                <p><li style="font-size:12px;">{{list.responsibilities}}</li></p>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="panel-full ng-star-inserted">
+                        <div class="panel panel-open">
+                            <div class="panel-heading clearfix">
+                                <h2 class="panel-title theme-color fl-left text-capitalize">Skills</h2>
+                            </div>
+                            <div class="panel-body padding-b10">
+                                <div class="skill-section ng-star-inserted">
+                                    <h4 class="title-12">Skill</h4>
+                                    <div class="skill-section-row-2 clearfix ng-star-inserted">
+                                        <span class="tag-job ng-star-inserted">{{list.skill.skill}}</span>
+                                    </div>
+                                </div>
+                        
+                                <div class="skill-section ng-star-inserted">
+                                    <h4 class="title-12">Minimum Qualification</h4>
+                                    <div class="skill-section-row-2 clearfix ng-star-inserted">
+                                        <span class="tag-job ng-star-inserted">{{list.education.education}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            {% comment %} <ul class="list-unstyled">
+                            <li><i class="fa fa-angle-right text-primary me-2"></i>Dolor justo tempor duo ipsum accusam</li>
+                            <li><i class="fa fa-angle-right text-primary me-2"></i>Elitr stet dolor vero clita labore gubergren</li>
+                            <li><i class="fa fa-angle-right text-primary me-2"></i>Rebum vero dolores dolores elitr</li>
+                            <li><i class="fa fa-angle-right text-primary me-2"></i>Est voluptua et sanctus at sanctus erat</li>
+                            <li><i class="fa fa-angle-right text-primary me-2"></i>Diam diam stet erat no est est</li>
+                            </ul> {% endcomment %}
+                        </div>
+                    </div>
+                {% endfor %}                        
+                    </div>
+                {% for list in joblisting %}
+                    <div class="colm" style="width:66.666%; flex:0 0 auto;">
+                        <div class="bg-light rounded p-5 mb-4 wow " data-wow-delay="0.1s">
+                            <h4 class="mb-4">Job Summery</h4>
+                         
+                            {% comment %} <p><i class="fa fa-angle-right text-primary me-2"></i>Published On: {{list.published_on}}</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Vacancy: {{list.vacancy}} Position</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Job Nature:{{list.employment_status}}</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Salary: {{list.Salary}}</p>
+                            <p><i class="fa fa-angle-right text-primary me-2"></i>Location: {{list.job_location}}</p>
+                            <p class="m-0"><i class="fa fa-angle-right text-primary me-2"></i>Date Line:{{list.application_deadline}}</p> {% endcomment %}
+                        </div>
+                        {% comment %} <div class="bg-light rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                            <h4 class="mb-4">Company Detail</h4>
+                            <p class="m-0">{{list.company_name}}</p>
+                        </div> {% endcomment %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- Job Detail End -->
+
+      
+    {% endblock main_content%}
+
